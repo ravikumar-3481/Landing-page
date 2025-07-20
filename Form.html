@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Let's Connect</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a5b4fc;
+            --dark: #2d3748;
+            --light: #f8fafc;
+            --light-gray: #edf2f7;
+            --success: #48bb78;
+            --error: #f56565;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: linear-gradient(135deg, var(--light), var(--secondary));
+            background-image: radial-gradient(circle at 85% 15%, hsla(220, 100%, 98%, 0.9) 0%, transparent 20%),
+                              radial-gradient(circle at 15% 85%, hsla(235, 100%, 98%, 0.9) 0%, transparent 20%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background:  rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-container {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .form-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 10px;
+            background-color: var(--light);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--dark);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            color: #777;
+            font-size: 1rem;
+            padding: 0 5px;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:hover,
+        .form-group textarea:hover,
+        .form-group select:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .form-group input:focus,
+        .form-group input:valid,
+        .form-group textarea:focus,
+        .form-group textarea:valid,
+        .form-group select:focus,
+        .form-group select:valid {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .form-group input:focus + label,
+        .form-group input:valid + label,
+        .form-group textarea:focus + label,
+        .form-group textarea:valid + label,
+        .form-group select:focus + label,
+        .form-group select:valid + label {
+            top: -10px;
+            left: 10px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            background: white;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            transform-origin: center center;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .contact-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
+        .image-text {
+            position: absolute;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            z-index: 2;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .success-message {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s ease;
+            z-index: 10;
+        }
+
+        .success-message.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            animation: bounce 0.5s ease 0.3s both;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .form-group.error input,
+        .form-group.error textarea,
+        .form-group.error select {
+            border-color: var(--error);
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .form-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-image">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ad237c5d-2d25-4612-93d2-d3aa31fd1f1e.png" alt="Contact Banner" />
+            <div class="image-text">Let's Build Something Amazing Together</div>
+        </div>
+        <div class="form-container">
+            <div class="form-header">
+                <h1>Contact Us</h1>
+                <p>Have questions or want to work together? Drop us a message!</p>
+            </div>
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" required>
+                    <label for="name">Your Name</label>
+                    <span class="error-message">Please enter your name</span>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email Address</label>
+                    <span class="error-message">Please enter a valid email</span>
+                </div>
+                <div class="form-group">
+                    <select id="subject" name="subject" required>
+                        <option value="" disabled selected></option>
+                        <option value="general">General Inquiry</option>
+                        <option value="work">Work With Us</option>
+                        <option value="support">Support</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label for="subject">Subject</label>
+                    <span class="error-message">Please select a subject</span>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" required></textarea>
+                    <label for="message">Your Message</label>
+                    <span class="error-message">Please enter your message</span>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+        <div class="success-message">
+            <div class="success-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+            </div>
+            <h2>Message Sent!</h2>
+            <p>We've received your message and will get back to you soon.</p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            let isValid = true;
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const subject = document.getElementById('subject');
+            const message = document.getElementById('message');
+
+            if (name.value.trim() === '') {
+                name.parentElement.classList.add('error');
+                isValid = false;
+            }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                email.parentElement.classList.add('error');
+                isValid = false;
+            }
+            if (!subject.value) {
+                subject.parentElement.classList.add('error');
+                isValid = false;
+            }
+            if (message.value.trim() === '') {
+                message.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            const formData = new FormData();
+            formData.append('name', name.value);
+            formData.append('email', email.value);
+            formData.append('subject', subject.value);
+            formData.append('message', message.value);
+
+            try {
+                const response = await fetch('https://formspree.io/f/manjerbj', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    document.querySelector('.success-message').classList.add('active');
+                    form.reset();
+                    setTimeout(() => {
+                        document.querySelector('.success-message').classList.remove('active');
+                    }, 5000);
+                } else {
+                    alert("Something went wrong, please try again later.");
+                }
+            } catch (error) {
+                alert("Failed to send message.");
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>
